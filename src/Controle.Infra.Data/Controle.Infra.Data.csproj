@@ -12,11 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Context\" />
     <Folder Include="Mappings\" />
     <Folder Include="Extensions\" />
     <Folder Include="Migrations\" />
     <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Controle.Domain.Core\Controle.Domain.Core.csproj" />
+    <ProjectReference Include="..\Controle.Domain\Controle.Domain.csproj" />
   </ItemGroup>
 
 </Project>
