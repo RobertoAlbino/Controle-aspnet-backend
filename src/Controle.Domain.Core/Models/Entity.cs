@@ -1,7 +1,10 @@
-﻿namespace Controle.Domain.Core.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Controle.Domain.Core.Models
 {
     public abstract class Entity
     {
+        [Key]
         public int Id { get; protected set; }
 
         public override bool Equals(object obj)
