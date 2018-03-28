@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using FluentValidation;
-using FluentValidation.Results;
+using Validation = FluentValidation.Results;
 
 namespace Controle.Domain.Core.Models
 {
@@ -8,7 +8,7 @@ namespace Controle.Domain.Core.Models
     {
         [Key]
         public int Id { get; protected set; }
-        public FluentValidation.Results.ValidationResult ValidationResult { get; protected set; }
+        public Validation.ValidationResult ValidationResult { get; protected set; }
 
         public Entity()
         {
@@ -49,9 +49,9 @@ namespace Controle.Domain.Core.Models
             return $"Entidade: {GetType().Name} - Id: {Id}";
         }
 
-        public virtual bool ValidarEntidade()
+        public virtual Validation.ValidationResult ValidarEntidade()
         {
-            return ValidationResult.IsValid;
+            return ValidationResult;
         }
     }
 }

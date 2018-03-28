@@ -1,5 +1,8 @@
-﻿using Controle.Domain.Core.Models;
+﻿using System;
+using System.Collections.Generic;
+using Controle.Domain.Core.Models;
 using FluentValidation;
+using FluentValidation.Results;
 
 namespace Controle.Domain.Models
 {
@@ -15,15 +18,20 @@ namespace Controle.Domain.Models
             Cliente = cliente;
             Problema = problema;
 
-            ValidarEntidade();
+            var validacao = ValidarEntidade(); 
+            if (!validacao.IsValid)
+            {
+                // TODO: Criar uma lista de erros
+                throw new Exception("A entidade não foi criada corretamente.");
+            }
         }
 
-        public override bool ValidarEntidade()
+        public override ValidationResult ValidarEntidade()
         {
             ValidarEquipamento();
             ValidarCliente();
             ValidarProblema();
-            ValidationResult = Validate(this);
+            return ValidationResult = Validate(this);
         }
 
         public void ValidarEquipamento()
@@ -47,7 +55,5 @@ namespace Controle.Domain.Models
                 .NotEmpty()
                 .WithMessage("O problema não pode ser nulo.");
         }
-
-
     }
 }
