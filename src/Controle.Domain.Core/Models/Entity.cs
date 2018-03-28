@@ -1,22 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace Controle.Domain.Core.Models
 {
-    public abstract class Entity
+    public abstract class Entity<T> : AbstractValidator<T> where T : Entity<T>
     {
         [Key]
         public int Id { get; protected set; }
+        public FluentValidation.Results.ValidationResult ValidationResult { get; protected set; }
+
+        public Entity()
+        {
+            ValidationResult = new FluentValidation.Results.ValidationResult();
+        }
 
         public override bool Equals(object obj)
         {
-            var compare = obj as Entity;
+            var compare = obj as Entity<T>;
             if (ReferenceEquals(this, compare)) return true;
             if (ReferenceEquals(null, compare)) return false;
 
             return Id.Equals(compare.Id);
         }
 
-        public static bool operator ==(Entity a, Entity b)
+        public static bool operator ==(Entity<T> a, Entity<T> b)
         {
             if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
                 return true;
@@ -26,7 +34,7 @@ namespace Controle.Domain.Core.Models
             return a.Equals(b);
         }
 
-        public static bool operator !=(Entity a, Entity b)
+        public static bool operator !=(Entity<T> a, Entity<T> b)
         {
             return !(a == b);
         }
@@ -39,6 +47,11 @@ namespace Controle.Domain.Core.Models
         public override string ToString()
         {
             return $"Entidade: {GetType().Name} - Id: {Id}";
+        }
+
+        public virtual bool ValidarEntidade()
+        {
+            return ValidationResult.IsValid;
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Controle.Domain.Models
 {
-    public class Pais : Entity
+    public class Pais : Entity<Pais>
     {
-        public string Nome { get; protected set; }
+        public string Nome { get; private set; }
 
         public Pais(string nome)
         {

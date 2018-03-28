@@ -2,9 +2,9 @@
 
 namespace Controle.Domain.Models
 {
-    public class TipoEquipamento : Entity
+    public class TipoEquipamento : Entity<TipoEquipamento>
     {
-        public string Nome { get; protected set; }
+        public string Nome { get; private set; }
 
         public TipoEquipamento(string nome)
         {
