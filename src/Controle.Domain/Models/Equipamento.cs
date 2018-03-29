@@ -1,4 +1,5 @@
-﻿using Controle.Domain.Core.Models;
+﻿using System.Collections.Generic;
+using Controle.Domain.Core.Models;
 
 namespace Controle.Domain.Models
 {
@@ -6,13 +7,21 @@ namespace Controle.Domain.Models
     {
         public string Nome { get; private set; }
         public string Marca { get; private set; }
-        public TipoEquipamento TipoEquipamento { get; private set; }
+        public int IdTipoEquipamento { get; private set; }
 
-        public Equipamento(string nome, string marca, TipoEquipamento tipoEquipamento)
+        #region Referência 
+        public virtual TipoEquipamento TipoEquipamento { get; set; }
+        #endregion
+
+        #region Navegação inversa
+        public ICollection<OrdemServico> OrdemServico { get; set; }
+        #endregion
+
+        public Equipamento(string nome, string marca, int idTipoEquipamento)
         {
             Nome = nome;
             Marca = marca;
-            TipoEquipamento = tipoEquipamento;
+            IdTipoEquipamento = idTipoEquipamento;
         }
     }
 }

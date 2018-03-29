@@ -8,15 +8,22 @@ namespace Controle.Domain.Models
 {
     public class OrdemServico : Entity<OrdemServico>
     {
-        public Equipamento Equipamento { get; private set; }
-        public Cliente Cliente { get; private set; }
+        public int IdEquipamento { get; private set; }
+        public int IdCliente { get; private set; }
         public string Problema { get; private set; }
+        public bool Atendida { get; private set; }
 
-        public OrdemServico(Equipamento equipamento, Cliente cliente, string problema)
+        #region Referência
+        public virtual Equipamento Equipamento { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        #endregion
+
+        public OrdemServico(int idEquipamento, int idCliente, string problema, bool atendida)
         {
-            Equipamento = equipamento;
-            Cliente = cliente;
+            IdEquipamento = idEquipamento;
+            IdCliente = idCliente;
             Problema = problema;
+            Atendida = atendida;
 
             var validacao = ValidarEntidade(); 
             if (!validacao.IsValid)

@@ -1,4 +1,5 @@
-﻿using Controle.Domain.Core.Models;
+﻿using System.Collections.Generic;
+using Controle.Domain.Core.Models;
 
 namespace Controle.Domain.Models
 {
@@ -7,14 +8,22 @@ namespace Controle.Domain.Models
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Telefone { get; private set; }
-        public Endereco Endereco { get; private set; }
+        public int IdEndereco { get; private set; }
 
-        public Cliente(string nome, string email, string telefone, Endereco endereco)
+        #region Referência
+        public virtual Endereco Endereco { get; private set; }
+        #endregion
+
+        #region Navegação inversa
+        public ICollection<OrdemServico> OrdemServico { get; set; }
+        #endregion
+
+        public Cliente(string nome, string email, string telefone, int idEndereco)
         {
             Nome = nome;
             Email = email;
             Telefone = telefone;
-            Endereco = endereco;
+            IdEndereco = idEndereco;
         }
     }
 }
