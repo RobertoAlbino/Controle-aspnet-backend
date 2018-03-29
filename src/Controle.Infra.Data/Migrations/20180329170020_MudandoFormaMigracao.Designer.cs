@@ -11,9 +11,10 @@ using System;
 namespace Controle.Infra.Data.Migrations
 {
     [DbContext(typeof(ControleContext))]
-    partial class ControleContextModelSnapshot : ModelSnapshot
+    [Migration("20180329170020_MudandoFormaMigracao")]
+    partial class MudandoFormaMigracao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
