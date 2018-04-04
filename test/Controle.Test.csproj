@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="1 - Services.Api.Test\" />
+    <Folder Include="2 - Application.Test\" />
+    <Folder Include="3 - Domain.Core.Test\" />
+    <Folder Include="4 - Infra.Test\4.1 - Controle.Infra.Data.Test\" />
+    <Folder Include="4 - Infra.Test\4.2 - Controle.Infra.CrossCutting.Test\" />
+  </ItemGroup>
+
+</Project>
