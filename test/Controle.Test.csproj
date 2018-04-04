@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
@@ -19,6 +21,14 @@
     <Folder Include="3 - Domain.Core.Test\" />
     <Folder Include="4 - Infra.Test\4.1 - Controle.Infra.Data.Test\" />
     <Folder Include="4 - Infra.Test\4.2 - Controle.Infra.CrossCutting.Test\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Controle.Application\Controle.Application.csproj" />
+    <ProjectReference Include="..\src\Controle.Domain.Core\Controle.Domain.Core.csproj" />
+    <ProjectReference Include="..\src\Controle.Domain\Controle.Domain.csproj" />
+    <ProjectReference Include="..\src\Controle.Infra.Data\Controle.Infra.Data.csproj" />
+    <ProjectReference Include="..\src\Controle.Services.Api\Controle.Services.Api.csproj" />
   </ItemGroup>
 
 </Project>
